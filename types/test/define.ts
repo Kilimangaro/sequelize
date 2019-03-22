@@ -18,6 +18,18 @@ type UserModel = {
 } & typeof Model;
 
 const User = sequelize.define('User', { firstName: DataTypes.STRING }, { tableName: 'users' }) as UserModel;
+// const UserMyModel = sequelize.define('User', { firstName: DataTypes.STRING }, { tableName: 'users' });
+
+class UUU extends sequelize.define('User', { firstName: DataTypes.STRING }, { tableName: 'users' }) {
+
+    aaa() {
+        this.firstName;
+    }
+    static asd() {
+
+        let a = this.tableName
+    }
+}
 
 async function test() {
     User.customStaticMethod();

@@ -12,7 +12,7 @@ import { sequelize } from '../connection';
 
 export class User extends Model {
   public static associations: {
-    group: BelongsTo<User, UserGroup>;
+    group: BelongsTo<typeof UserGroup>;
   };
 
   public id: number;
@@ -76,5 +76,4 @@ import { UserGroup } from './UserGroup';
 export const Group = User.belongsTo(UserGroup, { as: 'group', foreignKey: 'groupId' });
 
 // associations refer to their Model
-const userType: ModelCtor<User> = User.associations.group.source;
 const groupType: ModelCtor<UserGroup> = User.associations.group.target;

@@ -1400,7 +1400,7 @@ export abstract class Model<T = any, T2 = any> extends Hooks {
   /**
    * An object hash from alias to association object
    */
-  // public static readonly associations: any;
+  public static readonly associations: Record<string, Association>;
 
   /**
    * The options that the model was initialized with
@@ -2190,9 +2190,9 @@ export abstract class Model<T = any, T2 = any> extends Hooks {
    * @param target The model that will be associated with hasOne relationship
    * @param options Options for the association
    */
-  public static hasOne<M extends Model, T extends Model>(
-    this: ModelCtor<M>, target: ModelCtor<T>, options?: HasOneOptions
-  ): HasOne<M, T>;
+  public static hasOne<T extends typeof Model>(
+    target: T, options?: HasOneOptions
+  ): HasOne<T>;
 
   /**
    * Creates an association between this (the source) and the provided target. The foreign key is added on the
@@ -2203,9 +2203,9 @@ export abstract class Model<T = any, T2 = any> extends Hooks {
    * @param target The model that will be associated with hasOne relationship
    * @param options Options for the association
    */
-  public static belongsTo<M extends Model, T extends Model>(
-    this: ModelCtor<M>, target: ModelCtor<T>, options?: BelongsToOptions
-  ): BelongsTo<M, T>;
+  public static belongsTo<T extends typeof Model>(
+    target: T, options?: BelongsToOptions
+  ): BelongsTo<T>;
     
   /**
    * Create an association that is either 1:m or n:m.
@@ -2259,9 +2259,9 @@ export abstract class Model<T = any, T2 = any> extends Hooks {
    * @param target The model that will be associated with hasOne relationship
    * @param options Options for the association
    */
-  public static hasMany<M extends Model, T extends Model>(
-    this: ModelCtor<M>, target: ModelCtor<T>, options?: HasManyOptions
-  ): HasMany<M, T>;
+  public static hasMany<T extends typeof Model>(
+    target: T, options?: HasManyOptions
+  ): HasMany<T>;
 
   /**
    * Create an N:M association with a join table
@@ -2311,9 +2311,9 @@ export abstract class Model<T = any, T2 = any> extends Hooks {
    * @param options Options for the association
    *
    */
-  public static belongsToMany<M extends Model, T extends Model>(
-    this: ModelCtor<M>, target: ModelCtor<T>, options: BelongsToManyOptions
-  ): BelongsToMany<M, T>;
+  public static belongsToMany<T extends typeof Model>(
+    target: T, options: BelongsToManyOptions
+  ): BelongsToMany<T>;
 
   /**
    * Returns true if this instance has not yet been persisted to the database
