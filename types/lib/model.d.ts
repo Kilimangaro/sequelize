@@ -1400,9 +1400,7 @@ export abstract class Model<T = any, T2 = any> extends Hooks {
   /**
    * An object hash from alias to association object
    */
-  public static readonly associations: {
-    [key: string]: Association;
-  };
+  // public static readonly associations: any;
 
   /**
    * The options that the model was initialized with
